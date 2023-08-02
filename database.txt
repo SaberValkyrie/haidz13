@@ -1,0 +1,56 @@
+CREATE DATABASE spring_security2;
+USE spring_security2;
+-- Dumping structure for table spring_security2.authorities
+CREATE TABLE IF NOT EXISTS `authorities` (
+  `username` varchar(55) CHARACTER SET latin1 NOT NULL,
+  `authority` varchar(55) CHARACTER SET latin1 NOT NULL,
+  KEY `khong` (`username`,`authority`) USING BTREE,
+  CONSTRAINT `khong` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table spring_security2.authorities: ~4 rows (approximately)
+INSERT INTO `authorities` (`username`, `authority`) VALUES
+	('james', 'ROLE_EMPLOYEE'),
+	('john', 'ROLE_ADMIN'),
+	('mary', 'ROLE_EMPLOYEE'),
+	('ngocsonadmin', 'ROLE_ADMIN');
+
+-- Dumping structure for table spring_security2.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `username` varchar(55) CHARACTER SET latin1 NOT NULL,
+  `password` char(68) CHARACTER SET latin1 NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table spring_security2.users: ~4 rows (approximately)
+INSERT INTO `users` (`username`, `password`, `enabled`) VALUES
+	('james', '{bcrypt}$2a$10$flAoK1p4r1Xmk9oSDiIyUuu28lRSFUuuRP26RXsGnkH4qbwudkACq', 1),
+	('john', '{bcrypt}$2a$10$flAoK1p4r1Xmk9oSDiIyUuu28lRSFUuuRP26RXsGnkH4qbwudkACq', 1),
+	('mary', '{bcrypt}$2a$10$flAoK1p4r1Xmk9oSDiIyUuu28lRSFUuuRP26RXsGnkH4qbwudkACq', 0),
+	('ngocsonadmin', '{bcrypt}$2a$10$flAoK1p4r1Xmk9oSDiIyUuu28lRSFUuuRP26RXsGnkH4qbwudkACq', 1);
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+
+
+
+
+
+CREATE DATABASE employees_db;
+USE employees_db;
+CREATE TABLE Employee (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    wage DECIMAL(10, 2) NOT NULL
+);
+INSERT INTO Employees (name, wage) VALUES ('John Doe', 5000.00);
+INSERT INTO Employees (name, wage) VALUES ('Jane Smith', 5500.00);
+INSERT INTO Employees (name, wage) VALUES ('Michael Johnson', 6000.00);
+INSERT INTO Employees (name, wage) VALUES ('Emily Brown', 5200.00);
+INSERT INTO Employees (name, wage) VALUES ('William Davis', 4800.00);
+
+
